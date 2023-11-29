@@ -45,7 +45,7 @@
   text-align: left;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('logo.svg');
+  background-image: url('/logo.svg');
   background-repeat: no-repeat;
   background-position-x: calc(100% - 40px);
   background-position-y: calc(100% - 40px);
