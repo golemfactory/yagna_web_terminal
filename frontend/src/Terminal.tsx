@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
-import { Terminal, IDisposable } from "xterm";
+import { Terminal } from "xterm";
 import "xterm/css/xterm.css";
 import { FitAddon } from "xterm-addon-fit";
 
@@ -82,6 +82,9 @@ export const TerminalComponent = () => {
         case "\u007F": // Backspace (DEL)
           console.log("backspace");
           // Do not delete the prompt
+
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-ignore
           if (term._core.buffer.x > 2) {
             term.write("\b \b");
             if (command.length > 0) {
