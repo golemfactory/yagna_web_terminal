@@ -3,7 +3,7 @@ import { exec } from "child_process";
 const wss = new WebSocketServer({ port: 8080 });
 wss.on("connection", function connection(ws) {
   ws.on("message", function message(data) {
-    console.log("Received:", data);
+    console.log("Received:", data.toString());
     const badCommands = [
       "rm",
       "sudo",
@@ -20,6 +20,8 @@ wss.on("connection", function connection(ws) {
       }
     }
     exec(data.toString(), (_error, stdout, stderr) => {
+      console.log("Stdout:", stdout);
+      console.log("Stderr:", stderr);
       ws.send(stdout || stderr);
     });
   });
