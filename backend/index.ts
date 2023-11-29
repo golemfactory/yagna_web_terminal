@@ -1,6 +1,6 @@
 import { WebSocketServer } from "ws";
 import { exec } from "child_process";
-const wss = new WebSocketServer({ port: 8080 });
+const wss = new WebSocketServer({ port: 3010 });
 wss.on("connection", function connection(ws) {
   ws.on("message", function message(data) {
     console.log("Received:", data.toString());
