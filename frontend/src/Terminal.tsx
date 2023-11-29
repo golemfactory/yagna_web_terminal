@@ -25,8 +25,8 @@ export const TerminalComponent = () => {
 
   const index = useRef(0);
 
-  const socket = useRef(new WebSocket("ws://localhost:8080"));
-
+  const socket = useRef(new WebSocket(import.meta.env.VITE_WS_URL as string));
+  console.log("Launching to socket at", import.meta.env.VITE_WS_URL);
   const [command, setCommand] = useState("");
 
   const prompt = useCallback(() => {
