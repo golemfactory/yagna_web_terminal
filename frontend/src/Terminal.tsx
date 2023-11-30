@@ -4,6 +4,12 @@ import { Terminal } from "xterm";
 import "xterm/css/xterm.css";
 import { FitAddon } from "xterm-addon-fit";
 
+const specialCommands = {
+  "yagna payment onboard": () => {
+    return "Not implemented yet, waiting for url from Kaja";
+  },
+};
+
 export const TerminalComponent = () => {
   // Persisting the terminal instance between renders
   const xtermRef = useRef(
@@ -35,9 +41,18 @@ export const TerminalComponent = () => {
 
   const runCommand = useCallback(() => {
     if (command.length > 0) {
-      socket.current.send(command);
       setHistory((prev) => [...prev, command]);
       index.current = history.length + 1;
+      if (specialCommands[command as keyof typeof specialCommands]) {
+        const result =
+          specialCommands[command as keyof typeof specialCommands]();
+        xtermRef.current.writeln("\r\n");
+        //todo add methods for errors and warnings
+        xtermRef.current.writeln("\x1b[1;31m" + result + "\x1b[0m");
+        prompt();
+        return;
+      }
+      socket.current.send(command);
       return;
     }
   }, [command, history]);
