@@ -6,7 +6,11 @@ import { FitAddon } from "xterm-addon-fit";
 
 const specialCommands = {
   "yagna payment onboard": () => {
-    return "Not implemented yet, waiting for url from Kaja";
+    window.open(
+      "https://www.figma.com/proto/CtGxOLG6l6E9LB27Fy0azQ/Onboarding?type=design&node-id=629-4140&t=1gg1CTCxQSraEPHB-0&scaling=scale-down-width&page-id=629%3A3717&starting-point-node-id=629%3A4140&hotspot-hints=0&disable-default-keyboard-nav=1&hide-ui=1"
+    );
+
+    return "Opening onboarding";
   },
 };
 
